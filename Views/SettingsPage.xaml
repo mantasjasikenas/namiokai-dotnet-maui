@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Namiokai.Views.SettingsPage"
+             Title="{x:Static props:Resources.SettingsPage_title}"
+             Shell.TabBarIsVisible="False"
+             xmlns:props="clr-namespace:Namiokai"
+             xmlns:vm="clr-namespace:Namiokai.ViewModels"
+             x:DataType="vm:SettingsViewModel"
+             Shell.NavBarIsVisible="False">
+
+    <Grid ColumnDefinitions="*, *"
+          RowDefinitions="Auto,Auto,*"
+          RowSpacing="10"
+          Margin="20">
+        <Label Text="{x:Static props:Resources.Current_user}"
+               HorizontalOptions="Center" />
+        <Picker Grid.Column="1"
+                SelectedItem="{Binding CurrentUser}"
+                BackgroundColor="{StaticResource Primary}"
+                TextColor="White"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Mantelis</x:String>
+                    <x:String>Klaidas</x:String>
+                    <x:String>Klaidelis</x:String>
+                    <x:String>Unspecified</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <Label Text="{x:Static props:Resources.Dark_mode}"
+               HorizontalOptions="Center"
+               Grid.Row="1"
+               VerticalOptions="Center" />
+        <Switch IsToggled="{Binding IsDarkModeEnabled}"
+                Grid.Row="1"
+                Grid.Column="1"
+                HorizontalOptions="Center"
+                VerticalOptions="Center" />
+
+        <Grid IsVisible="{OnIdiom Default=True, Desktop=False}"
+              Grid.Row="2"
+              Grid.ColumnSpan="2"
+              ColumnDefinitions="*, *"
+              RowDefinitions="Auto,Auto,Auto"
+              RowSpacing="10"
+              Margin="20">
+            <Label Text="{x:Static props:Resources.Admin_panel}"
+                   HorizontalOptions="Center"
+                   Grid.Row="0"
+                   VerticalOptions="Center" />
+            <Button Grid.Row="0"
+                    Grid.Column="1"
+                    Text="{x:Static props:Resources.Login}"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Command="{Binding LoginCommand}"
+                    IsVisible="{Binding IsDevMenuHidden}" />
+
+            <Button Grid.Row="0"
+                    Grid.Column="1"
+                    Text="{x:Static props:Resources.Logout}"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Command="{Binding LogoutCommand}"
+                    IsVisible="{Binding IsDevMenuVisible}" />
+
+            <Grid ColumnDefinitions="*, *"
+                  RowDefinitions="Auto,Auto,Auto"
+                  RowSpacing="10"
+                  Margin="20"
+                  Grid.Row="1"
+                  Grid.ColumnSpan="2"
+                  IsVisible="{Binding IsDevMenuVisible}">
+
+                <Label Text="{x:Static props:Resources.Developer_mode}"
+                       HorizontalOptions="Center"
+                       FontAttributes="Bold"
+                       FontSize="Medium"
+                       Grid.Row="0"
+                       Grid.ColumnSpan="2"
+                       VerticalOptions="Center" />
+                <Label Text="{x:Static props:Resources.Clear_database}"
+                       HorizontalOptions="Center"
+                       Grid.Row="1"
+                       VerticalOptions="Center" />
+                <Button Grid.Row="1"
+                        Grid.Column="1"
+                        Text="{x:Static props:Resources.Clear}"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Command="{Binding ClearSheetsCommand}" />
+                <Label Text="{x:Static props:Resources.Clear_preferences}"
+                       HorizontalOptions="Center"
+                       Grid.Row="2"
+                       VerticalOptions="Center" />
+                <Button Grid.Row="2"
+                        Grid.Column="1"
+                        Text="{x:Static props:Resources.Clear}"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Command="{Binding ClearPreferencesCommand}" />
+            </Grid>
+        </Grid>
+
+    </Grid>
+
+</ContentPage>
