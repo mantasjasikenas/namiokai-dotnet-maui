@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               x:Class="Namiokai.Views.SelectUserPopup"
+               xmlns:vm="clr-namespace:Namiokai.Views"
+               xmlns:props="clr-namespace:Namiokai"
+               x:DataType="vm:SelectUserPopup"
+               CanBeDismissedByTappingOutsideOfPopup="False"
+               Color="{AppThemeBinding Dark={StaticResource BackgroundDark}, Light={StaticResource BackgroundLight}}">
+    <VerticalStackLayout Padding="20">
+        <Label Text="Please select user"
+               FontSize="20"
+               HorizontalOptions="Center"
+               VerticalOptions="Start"
+               Padding="0, 0, 0, 40"
+               FontAttributes="Bold" />
+
+        <HorizontalStackLayout Spacing="30" 
+                               HorizontalOptions="Center">
+
+            <ImageButton Source="mantelis.png"
+                         CornerRadius="25"
+                         HeightRequest="50"
+                         WidthRequest="50"
+                         BorderColor="{StaticResource Primary}"
+                         Command="{Binding ImageButtonClickedCommand}"
+                         CommandParameter="Mantelis" />
+
+            <ImageButton Source="klaidas.png"
+                         CornerRadius="25"
+                         HeightRequest="50"
+                         WidthRequest="50"
+                         BorderColor="{StaticResource Primary}"
+                         Command="{Binding ImageButtonClickedCommand}"
+                         CommandParameter="Klaidas" />
+
+            <ImageButton Source="klaidelis.png"
+                         CornerRadius="25"
+                         HeightRequest="50"
+                         WidthRequest="50"
+                         BorderColor="{StaticResource Primary}"
+                         Command="{Binding ImageButtonClickedCommand}"
+                         CommandParameter="Klaidelis" />
+        </HorizontalStackLayout>
+
+    </VerticalStackLayout>
+</toolkit:Popup>

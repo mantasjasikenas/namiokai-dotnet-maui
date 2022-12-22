@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:props="clr-namespace:Namiokai"
+             x:Class="Namiokai.Views.LoginPage"
+             Title="{x:Static props:Resources.LoginPage_title}">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="25"
+                             Padding="30,0"
+                             VerticalOptions="Center">
+
+            <StackLayout x:Name="LoginView">
+                <Button x:Name="LoginBtn"
+                        Text="{x:Static props:Resources.Log_in}"
+                        SemanticProperties.Hint="Click to log in"
+                        HorizontalOptions="Center" />
+                <WebView x:Name="WebViewInstance" IsVisible="false"/>
+            </StackLayout>
+
+            <StackLayout x:Name="HomeView"
+                         IsVisible="false">
+
+                <Image x:Name="UserPictureImg"
+                       SemanticProperties.Description="{x:Static props:Resources.Users_picture}"
+                       HeightRequest="200"
+                       HorizontalOptions="Center" />
+
+                <Label x:Name="UsernameLbl"
+                       Text=""
+                       SemanticProperties.HeadingLevel="Level2"
+                       SemanticProperties.Description="{x:Static props:Resources.Users_name}"
+                       FontSize="18"
+                       HorizontalOptions="Center" />
+
+                <Button x:Name="LogoutBtn"
+                        Text="{x:Static props:Resources.Log_out}"
+                        SemanticProperties.Hint="{x:Static props:Resources.Click_log_out}"
+                        
+                        HorizontalOptions="Center" />
+
+            </StackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

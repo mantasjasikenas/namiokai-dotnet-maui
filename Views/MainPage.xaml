@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Namiokai.Views.MainPage"
+             xmlns:vm="clr-namespace:Namiokai.ViewModels"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:DataType="vm:MainViewModel"
+             xmlns:props="clr-namespace:Namiokai"
+             IconImageSource="https://cdn-icons-png.flaticon.com/512/3314/3314642.png"
+             Title="{x:Static props:Resources.MainPage_title}"
+             Appearing="ContentPage_Appearing">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="toolkit:AvatarView">
+                <Setter Property="BorderColor"
+                        Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+
+    <Page.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="{AppThemeBinding Light={StaticResource SecondaryLight}, Dark={StaticResource SecondaryDark}}" />
+    </Page.Behaviors>
+
+   
+
+    <RefreshView IsRefreshing="{Binding IsRefreshing}"
+                 Command="{Binding RefreshCommand}"
+                 RefreshColor="{StaticResource Pink}">
+        <ScrollView VerticalScrollBarVisibility="Never">
+            <VerticalStackLayout VerticalOptions="Center">
+                <Label Margin="20"
+                       Text="Debts"
+                       FontSize="Large"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       VerticalOptions="StartAndExpand" />
+
+                <Border Padding="15"
+                        Margin="20"
+                        Stroke="black"
+                        StrokeShape="RoundRectangle 20">
+                    <HorizontalStackLayout HorizontalOptions="Center">
+                        <toolkit:AvatarView ImageSource="{x:Static props:Resources.Mantelis_avatar}" />
+                        <Image Source="pay.png"
+                               HeightRequest="30"
+                               VerticalOptions="Center"
+                               Margin="30" />
+                        <Grid ColumnDefinitions="Auto, 100"
+                              RowDefinitions="Auto,Auto"
+                              ColumnSpacing="25"
+                              RowSpacing="10">
+                            <toolkit:AvatarView ImageSource="{x:Static props:Resources.Klaidas_avatar}" />
+                            <Label Text="{Binding Debts.MantelisToKlaidui, StringFormat='{0}'}"
+                                   FontSize="Body"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="Center"
+                                   Grid.Column="1" />
+                            <toolkit:AvatarView Grid.Row="1"
+                                                ImageSource="{x:Static props:Resources.Klaidelis_avatar}" />
+                            <Label FontSize="Body"
+                                   Text="{Binding Debts.MantelisToKlaideliui, StringFormat='{0}'}"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="Center"
+                                   Grid.Row="1"
+                                   Grid.Column="1" />
+                        </Grid>
+                    </HorizontalStackLayout>
+                </Border>
+
+                <Border Padding="15"
+                        Margin="20"
+                        Stroke="black"
+                        StrokeShape="RoundRectangle 20">
+                    <HorizontalStackLayout HorizontalOptions="Center">
+                        <toolkit:AvatarView  ImageSource="{x:Static props:Resources.Klaidas_avatar}" />
+                        <Image Source="pay.png"
+                               HeightRequest="30"
+                               VerticalOptions="Center"
+                               Margin="30" />
+                        <Grid ColumnDefinitions="Auto, 100"
+                              RowDefinitions="Auto,Auto"
+                              ColumnSpacing="25"
+                              RowSpacing="10">
+                            <toolkit:AvatarView ImageSource="{x:Static props:Resources.Mantelis_avatar}" />
+                            <Label Text="{Binding Debts.KlaidasToMantui, StringFormat='{0}'}"
+                                   FontSize="Body"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="Center"
+                                   Grid.Column="1" />
+                            <toolkit:AvatarView Grid.Row="1"
+                                                ImageSource="{x:Static props:Resources.Klaidelis_avatar}" />
+                            <Label FontSize="Body"
+                                   Text="{Binding Debts.KlaidasToKlaideliui, StringFormat='{0}'}"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="Center"
+                                   Grid.Row="1"
+                                   Grid.Column="1" />
+                        </Grid>
+                    </HorizontalStackLayout>
+                </Border>
+
+                <Border Padding="15"
+                        Margin="20"
+                        Stroke="black"
+                        StrokeShape="RoundRectangle 20">
+                    <HorizontalStackLayout HorizontalOptions="Center">
+                        <toolkit:AvatarView   ImageSource="{x:Static props:Resources.Klaidelis_avatar}" />
+                        <Image Source="pay.png"
+                               HeightRequest="30"
+                               VerticalOptions="Center"
+                               Margin="30" />
+                        <Grid ColumnDefinitions="Auto, 100"
+                              RowDefinitions="Auto,Auto"
+                              ColumnSpacing="25"
+                              RowSpacing="10">
+                            <toolkit:AvatarView ImageSource="{x:Static props:Resources.Mantelis_avatar}" />
+                            <Label Text="{Binding Debts.KlaidelisToMantui, StringFormat='{0}'}"
+                                   FontSize="Body"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="Center"
+                                   Grid.Column="1" />
+                            <toolkit:AvatarView Grid.Row="1"
+                                                ImageSource="{x:Static props:Resources.Klaidas_avatar}" />
+                            <Label FontSize="Body"
+                                   Text="{Binding Debts.KlaidelisToKlaidui, StringFormat='{0}'}"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="Center"
+                                   Grid.Row="1"
+                                   Grid.Column="1" />
+                        </Grid>
+                    </HorizontalStackLayout>
+                </Border>
+               
+            </VerticalStackLayout>
+        </ScrollView>
+    </RefreshView>
+
+</ContentPage>
